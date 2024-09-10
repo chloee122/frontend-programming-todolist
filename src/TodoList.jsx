@@ -9,12 +9,12 @@ function TodoList() {
   const addTodo = () => {
     setDesc("");
     setDate("");
-    setTodos([...todos, { description: desc, date }]);
+    setTodos([{ description: desc, date }, ...todos]);
   };
 
   const deleteTodo = (indexToDelete) => {
-    const filteredTodo = todos.filter((_, index) => index !== indexToDelete);
-    setTodos(filteredTodo);
+    const filteredTodos = todos.filter((_, index) => index !== indexToDelete);
+    setTodos(filteredTodos);
   };
 
   return (
