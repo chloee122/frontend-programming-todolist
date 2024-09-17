@@ -4,11 +4,13 @@ function TodoTable({ todos, deleteTodo }) {
       <tbody>
         <tr>
           <th id="date">Date</th>
+          <th>Priority</th>
           <th id="desc">Description</th>
         </tr>
         {todos.map((todo, index) => (
           <tr key={index}>
             <td>{todo.date}</td>
+            <td>{todo.priority}</td>
             <td>{todo.desc}</td>
             <td>
               <button onClick={() => deleteTodo(index)}>Delete</button>
