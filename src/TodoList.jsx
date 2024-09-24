@@ -5,9 +5,11 @@ import "ag-grid-community/styles/ag-theme-material.css";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Stack } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 
 function TodoList() {
   const [todo, setTodo] = useState({ desc: "", priority: "", date: null });
@@ -81,7 +83,12 @@ function TodoList() {
         <Button variant="outlined" onClick={addTodo}>
           Add
         </Button>
-        <Button variant="outlined" onClick={handleDelete}>
+        <Button
+          variant="outlined"
+          startIcon={<DeleteIcon />}
+          onClick={handleDelete}
+          color="error"
+        >
           Delete
         </Button>
       </Stack>
