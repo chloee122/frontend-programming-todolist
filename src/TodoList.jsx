@@ -9,7 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
+import "dayjs/locale/fi";
 
 function TodoList() {
   const [todo, setTodo] = useState({ desc: "", priority: "", date: null });
@@ -32,7 +32,10 @@ function TodoList() {
     if (!todo.desc || !todo.date) {
       alert("Please input missing info");
     } else {
-      const newTodo = { ...todo, date: todo.date.toISOString() };
+      const newTodo = {
+        ...todo,
+        date: todo.date.$d.toLocaleDateString("fi-FI"),
+      };
       setTodos([newTodo, ...todos]);
       setTodo({ desc: "", priority: "", date: null });
     }
@@ -77,7 +80,7 @@ function TodoList() {
           }}
           value={todo.priority}
         />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fi">
           <DatePicker value={todo.date} onChange={handleDateChange} />
         </LocalizationProvider>
         <Button variant="outlined" onClick={addTodo}>
